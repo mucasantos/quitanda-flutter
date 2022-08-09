@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quitanda/config/custom_color.dart';
-import 'package:quitanda/src/home/home_tab.dart';
+import 'package:quitanda/src/pages/home/home_tab.dart';
 
 class BaseScreen extends StatefulWidget {
   BaseScreen({Key? key}) : super(key: key);

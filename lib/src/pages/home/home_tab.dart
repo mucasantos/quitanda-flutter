@@ -1,8 +1,9 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
+import 'package:quitanda/config/app_data.dart' as appData;
 
 import 'package:quitanda/config/custom_color.dart';
-import 'package:quitanda/src/home/components/category_tile.dart';
+import 'package:quitanda/src/pages/home/components/category_tile.dart';
 
 class HomeTab extends StatefulWidget {
   HomeTab({Key? key}) : super(key: key);
@@ -12,14 +13,6 @@ class HomeTab extends StatefulWidget {
 }
 
 class _HomeTabState extends State<HomeTab> {
-  List<dynamic> categorias = [
-    {'cat': 'Vegetais', 'image': 'assets/images/vegetais.png'},
-    {'cat': 'Carnes', 'image': 'assets/images/carnes.png'},
-    {'cat': 'Bebidas', 'image': 'assets/images/bebidas.png'},
-    {'cat': 'Bolos,', 'image': 'assets/images/bolos.png'},
-    {'cat': 'Carnes,', 'image': 'assets/images/carnes.png'},
-  ];
-
   String selectedCategory = 'Frutas';
 
   @override
@@ -113,10 +106,10 @@ class _HomeTabState extends State<HomeTab> {
             ),
           ),
           Positioned(
-            top: 200,
+            top: 250,
             //bottom: 100,
             child: SizedBox(
-              height: 180,
+              height: 150,
               width: MediaQuery.of(context).size.width,
               child: ListView.builder(
                   itemCount: 13,
@@ -141,7 +134,7 @@ class _HomeTabState extends State<HomeTab> {
                                     Text(
                                       'Desconto',
                                       style: TextStyle(
-                                        fontSize: 25,
+                                        fontSize: 20,
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold,
                                       ),
@@ -149,7 +142,7 @@ class _HomeTabState extends State<HomeTab> {
                                     Text(
                                       '25%',
                                       style: TextStyle(
-                                        fontSize: 50,
+                                        fontSize: 40,
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold,
                                       ),
@@ -186,21 +179,26 @@ class _HomeTabState extends State<HomeTab> {
                   })),
             ),
           ),
-          const Positioned(
+          Positioned(
               top: 400,
-              child: Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Text(
-                  'Categorias',
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+              child: SizedBox(
+                height: 360,
+                width: MediaQuery.of(context).size.width,
+                child: Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: GridView.builder(
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                mainAxisSpacing: 10,
+                                crossAxisSpacing: 10),
+                        itemCount: appData.items.length,
+                        itemBuilder: (_, index) {
+                          return Container(color: Colors.red);
+                        })),
               )),
           Positioned(
-              top: 450,
+              top: 160,
               child: Container(
                 padding: const EdgeInsets.only(left: 25),
                 height: 80,
@@ -211,19 +209,19 @@ class _HomeTabState extends State<HomeTab> {
                       return CategoryTile(
                         onPressed: () {
                           setState(() {
-                            selectedCategory = categorias[index]['cat'];
+                            selectedCategory = appData.categorias[index]['cat'];
                           });
                         },
-                        category: categorias[index]['cat'],
-                        isSelected:
-                            categorias[index]['cat'] == selectedCategory,
-                        image: categorias[index]['image'],
+                        category: appData.categorias[index]['cat'],
+                        isSelected: appData.categorias[index]['cat'] ==
+                            selectedCategory,
+                        image: appData.categorias[index]['image'],
                       );
                     },
                     separatorBuilder: (_, index) => const SizedBox(
                           width: 10,
                         ),
-                    itemCount: categorias.length),
+                    itemCount: appData.categorias.length),
               ))
         ],
       ),
