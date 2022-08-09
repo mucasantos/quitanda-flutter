@@ -4,6 +4,7 @@ import 'package:quitanda/config/custom_color.dart';
 import 'package:quitanda/src/auth/components/custom_textfield.dart';
 import 'package:quitanda/src/auth/components/header_app.dart';
 import 'package:quitanda/src/auth/sign_up_Screen.dart';
+import 'package:quitanda/src/base/base_screen.dart';
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({Key? key}) : super(key: key);
@@ -20,7 +21,7 @@ class SignInScreen extends StatelessWidget {
           child: Column(
             children: [
               HeaderApp(
-                imagePath: 'assets/images/image1.png',
+                imagePath: 'assets/images/login.png',
               ),
               Container(
                 padding:
@@ -45,7 +46,12 @@ class SignInScreen extends StatelessWidget {
                         style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(14))),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(builder: (ctx) {
+                            return BaseScreen();
+                          }));
+                        },
                         child: const Text(
                           'Entrar',
                           style: TextStyle(

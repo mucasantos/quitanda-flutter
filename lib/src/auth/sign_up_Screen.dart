@@ -30,7 +30,7 @@ class SignUpScreen extends StatelessWidget {
               Column(
                 children: [
                   const HeaderApp(
-                    imagePath: 'assets/images/image2.png',
+                    imagePath: 'assets/images/singup.png',
                   ),
                   Container(
                     padding: const EdgeInsets.symmetric(
