@@ -2,6 +2,8 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:quitanda/config/custom_color.dart';
 import 'package:quitanda/src/auth/components/custom_textfield.dart';
+import 'package:quitanda/src/auth/components/header_app.dart';
+import 'package:quitanda/src/auth/sign_up_Screen.dart';
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({Key? key}) : super(key: key);
@@ -17,75 +19,8 @@ class SignInScreen extends StatelessWidget {
           width: size.width,
           child: Column(
             children: [
-              Expanded(
-                child: Stack(
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        color: CustomColors.customSwatchColor,
-                        borderRadius: BorderRadius.lerp(
-                            const BorderRadius.only(
-                                bottomLeft: Radius.circular(500)),
-                            const BorderRadius.only(
-                                bottomRight: Radius.circular(350)),
-                            0.8),
-                      ),
-                    ),
-                    Positioned(
-                      bottom: -30,
-                      top: 50,
-                      right: 10,
-                      child: Image.asset('assets/images/image1.png'),
-                    ),
-                    Positioned(
-                      left: 10,
-                      bottom: 0,
-                      child: Column(
-                        children: [
-                          Text.rich(TextSpan(
-                              style: const TextStyle(
-                                fontSize: 40,
-                              ),
-                              children: [
-                                const TextSpan(
-                                  text: 'Green',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                TextSpan(
-                                  text: 'Grocery',
-                                  style: TextStyle(
-                                    color: CustomColors.customContrasColor,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ])),
-                          SizedBox(
-                            height: 50,
-                            child: DefaultTextStyle(
-                              style: TextStyle(
-                                  fontSize: 35,
-                                  color: CustomColors.customAnimatedTextColor),
-                              child: AnimatedTextKit(
-                                repeatForever: true,
-                                pause: Duration.zero,
-                                animatedTexts: [
-                                  FadeAnimatedText('Frutas'),
-                                  FadeAnimatedText('Verduras'),
-                                  FadeAnimatedText('Legumes'),
-                                  FadeAnimatedText('Carnes'),
-                                  FadeAnimatedText('Cereais'),
-                                ],
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    )
-                  ],
-                ),
+              HeaderApp(
+                imagePath: 'assets/images/image1.png',
               ),
               Container(
                 padding:
@@ -162,7 +97,12 @@ class SignInScreen extends StatelessWidget {
                               width: 1,
                               color: CustomColors.customSwatchColor,
                             )),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context)
+                              .push(MaterialPageRoute(builder: (ctx) {
+                            return SignUpScreen();
+                          }));
+                        },
                         child: const Text(
                           'Criar conta',
                           style: TextStyle(
