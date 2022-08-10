@@ -1,16 +1,38 @@
-import 'dart:ui';
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:quitanda/config/app_data.dart' as appData;
 import 'package:quitanda/config/custom_color.dart';
+import 'package:quitanda/src/models/cart_item_model.dart';
+import 'package:quitanda/src/pages/cart/components/cart_tile.dart';
 import 'package:quitanda/src/services/util_services.dart';
 
-class CartTab extends StatelessWidget {
+class CartTab extends StatefulWidget {
   const CartTab({Key? key}) : super(key: key);
+
+  @override
+  State<CartTab> createState() => _CartTabState();
+}
+
+class _CartTabState extends State<CartTab> {
+  void removeItemFromCart(CartItemModel cartItem) {
+    setState(() {
+      appData.cartItems.remove(cartItem);
+    });
+  }
+
+  double cartTotalPrice() {
+    double total = 0;
+    for (var item in appData.cartItems) {
+      total += item.totalPrice();
+    }
+    return total;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey.shade200,
       appBar: AppBar(title: const Text('Carrinho')),
       body: Column(
         children: [
@@ -18,7 +40,10 @@ class CartTab extends StatelessWidget {
               child: ListView.builder(
                   itemCount: appData.cartItems.length,
                   itemBuilder: (_, index) {
-                    return Text(appData.cartItems[index].item.itemName);
+                    return CartTile(
+                      cartItemModel: appData.cartItems[index],
+                      remove: removeItemFromCart,
+                    );
                   })),
           Container(
             padding: const EdgeInsets.all(16.0),
@@ -43,7 +68,7 @@ class CartTab extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  UtilServices.priceToCurrency(50.3),
+                  UtilServices.priceToCurrency(cartTotalPrice()),
                   style: TextStyle(
                     fontSize: 23,
                     color: CustomColors.customSwatchColor,
@@ -57,7 +82,10 @@ class CartTab extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(14),
                     )),
-                    onPressed: () {},
+                    onPressed: () async {
+                      bool? result = await showOrderConfirmation();
+                      log(result.toString());
+                    },
                     child: const Text('Concluir pedido'),
                   ),
                 )
@@ -67,5 +95,36 @@ class CartTab extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Future<bool?> showOrderConfirmation() {
+    return showDialog<bool>(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+            title: const Text('Confirmação'),
+            content: const Text('Deseja realmente concluir o pedido?'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop(false);
+                },
+                child: const Text('Não'),
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                ),
+                onPressed: () {
+                  Navigator.of(context).pop(true);
+                },
+                child: const Text('Sim'),
+              ),
+            ],
+          );
+        });
   }
 }

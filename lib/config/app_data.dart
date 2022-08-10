@@ -101,6 +101,6 @@ List<dynamic> categorias = [
 List<CartItemModel> cartItems = [
   CartItemModel(item: apple, quantity: 2),
   CartItemModel(item: mango, quantity: 4),
-  CartItemModel(item: grape, quantity: 6),
+  CartItemModel(item: grape, quantity: 1),
   CartItemModel(item: potato, quantity: 3),
 ];
