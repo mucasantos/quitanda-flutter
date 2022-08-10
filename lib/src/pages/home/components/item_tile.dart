@@ -89,7 +89,7 @@ class ItemTile extends StatelessWidget {
         ),
         Positioned(
           top: 10,
-          left: 10,
+          right: 10,
           child: GestureDetector(
             onTap: () {},
             child: Container(

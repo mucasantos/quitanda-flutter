@@ -24,6 +24,7 @@ class _BaseScreenState extends State<BaseScreen> {
           Container(color: Colors.blue),
           Container(color: Colors.purple),
           Container(color: Colors.yellow),
+          Container(color: Colors.pink),
         ],
       ),
       bottomNavigationBar: ClipRRect(
@@ -49,15 +50,19 @@ class _BaseScreenState extends State<BaseScreen> {
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.shopping_cart_outlined),
-                label: 'Home',
+                label: 'Carrinho',
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.list),
-                label: 'Home',
+                label: 'Produtos',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.favorite_outline_outlined),
+                label: 'Favoritos',
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.person_outline),
-                label: 'Home',
+                label: 'Perfil',
               ),
             ]),
       ),
