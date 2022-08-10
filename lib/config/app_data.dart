@@ -1,3 +1,4 @@
+import 'package:quitanda/src/models/cart_item_model.dart';
 import 'package:quitanda/src/models/item_model.dart';
 
 ItemModel apple = ItemModel(
@@ -95,4 +96,11 @@ List<dynamic> categorias = [
   {'cat': 'Bebidas', 'image': 'assets/images/bebidas.png'},
   {'cat': 'Bolos', 'image': 'assets/images/bolos.png'},
   {'cat': 'Frutas', 'image': 'assets/images/frutas.png'},
+];
+
+List<CartItemModel> cartItems = [
+  CartItemModel(item: apple, quantity: 2),
+  CartItemModel(item: mango, quantity: 4),
+  CartItemModel(item: grape, quantity: 6),
+  CartItemModel(item: potato, quantity: 3),
 ];
