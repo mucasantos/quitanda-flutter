@@ -3,6 +3,7 @@ import 'package:quitanda/config/custom_color.dart';
 import 'package:quitanda/src/pages/cart/cart_tab.dart';
 import 'package:quitanda/src/pages/favorites/favorites_tab.dart';
 import 'package:quitanda/src/pages/home/home_tab.dart';
+import 'package:quitanda/src/pages/profile/profile_tab.dart';
 
 class BaseScreen extends StatefulWidget {
   BaseScreen({Key? key}) : super(key: key);
@@ -26,7 +27,7 @@ class _BaseScreenState extends State<BaseScreen> {
           CartTab(),
           Container(color: Colors.yellow),
           FavoritesTab(),
-          Container(color: Colors.pink),
+          ProfileTab(),
         ],
       ),
       bottomNavigationBar: ClipRRect(
@@ -56,7 +57,7 @@ class _BaseScreenState extends State<BaseScreen> {
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.list),
-                label: 'Produtos',
+                label: 'Pedidos',
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.favorite_outline_outlined),
