@@ -37,7 +37,8 @@ ItemModel guava = ItemModel(
   unit: 'kg',
 );
 ItemModel kiwi = ItemModel(
-  description: 'A melhor maça da regiao',
+  description:
+      'O melhor kiwi da regiao e que conta com o melhor preço de qualquer quitanda. Este item conta com vitaminas essenciais para o fortalecimento corporal, resultando em uma vida mais saudável.',
   imgUrl: 'assets/fruits/kiwi.png',
   itemName: 'Kiwi',
   price: 5.5,

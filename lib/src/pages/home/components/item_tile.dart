@@ -13,7 +13,7 @@ class ItemTile extends StatelessWidget {
     required this.item,
   }) : super(key: key);
 
-  final UtilServices utilServices = UtilServices();
+  // final UtilServices utilServices = UtilServices();
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class ItemTile extends StatelessWidget {
         GestureDetector(
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
-              return const ProductScreen();
+              return ProductScreen(item: item);
             }));
           },
           child: Card(
@@ -35,16 +35,19 @@ class ItemTile extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Expanded(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage(
-                            item.imgUrl,
-                          ),
-                          fit: BoxFit.cover),
-                      borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(14),
-                        topRight: Radius.circular(14),
+                  child: Hero(
+                    tag: item.imgUrl,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage(
+                              item.imgUrl,
+                            ),
+                            fit: BoxFit.cover),
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(14),
+                          topRight: Radius.circular(14),
+                        ),
                       ),
                     ),
                   ),
@@ -64,7 +67,7 @@ class ItemTile extends StatelessWidget {
                   child: Row(
                     children: [
                       Text(
-                        utilServices.priceToCurrency(item.price),
+                        UtilServices.priceToCurrency(item.price),
                         style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
