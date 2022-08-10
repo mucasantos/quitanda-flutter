@@ -8,7 +8,7 @@ import 'package:quitanda/src/pages/home/components/discount_card.dart';
 import 'package:quitanda/src/pages/home/components/item_tile.dart';
 
 class HomeTab extends StatefulWidget {
-  HomeTab({Key? key}) : super(key: key);
+  const HomeTab({Key? key}) : super(key: key);
 
   @override
   State<HomeTab> createState() => _HomeTabState();
@@ -16,6 +16,17 @@ class HomeTab extends StatefulWidget {
 
 class _HomeTabState extends State<HomeTab> {
   String selectedCategory = 'Frutas';
+  List<int> userFavorites = [1, 3, 5];
+
+  void addFavorite(int itemId) {
+    setState(() {
+      if (userFavorites.contains(itemId)) {
+        userFavorites.remove(itemId);
+      } else {
+        userFavorites.add(itemId);
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -139,8 +150,10 @@ class _HomeTabState extends State<HomeTab> {
                         itemCount: appData.items.length,
                         itemBuilder: (_, index) {
                           return ItemTile(
-                            item: appData.items[index],
-                          );
+                              item: appData.items[index],
+                              isFavorite: userFavorites
+                                  .contains(appData.items[index].itemId),
+                              addFavorite: addFavorite);
                         })),
               )),
           Positioned(

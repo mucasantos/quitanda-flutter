@@ -10,9 +10,11 @@ class ProductScreen extends StatefulWidget {
   ProductScreen({
     Key? key,
     required this.item,
+    required this.isFavorite,
   }) : super(key: key);
 
   ItemModel item;
+  bool isFavorite;
 
   @override
   State<ProductScreen> createState() => _ProductScreenState();
@@ -159,9 +161,11 @@ class _ProductScreenState extends State<ProductScreen> {
                         borderRadius: const BorderRadius.all(
                           Radius.circular(10),
                         )),
-                    child: const Icon(
-                      Icons.favorite_border_outlined,
-                      color: Colors.white,
+                    child: Icon(
+                      widget.isFavorite
+                          ? Icons.favorite
+                          : Icons.favorite_border_outlined,
+                      color: widget.isFavorite ? Colors.red : Colors.white,
                     ),
                   )
                 ],

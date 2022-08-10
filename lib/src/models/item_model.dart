@@ -1,4 +1,5 @@
 class ItemModel {
+  int itemId;
   String itemName;
   String imgUrl;
   String unit;
@@ -6,6 +7,7 @@ class ItemModel {
   String description;
 
   ItemModel({
+    required this.itemId,
     required this.description,
     required this.imgUrl,
     required this.itemName,

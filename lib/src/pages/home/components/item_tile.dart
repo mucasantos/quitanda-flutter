@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:quitanda/config/custom_color.dart';
 import 'package:quitanda/src/models/item_model.dart';
 import 'package:quitanda/src/pages/product/product_screen.dart';
@@ -8,9 +6,13 @@ import 'package:quitanda/src/services/util_services.dart';
 
 class ItemTile extends StatelessWidget {
   final ItemModel item;
-  ItemTile({
+  final bool isFavorite;
+  final Function(int itemId) addFavorite;
+  const ItemTile({
     Key? key,
     required this.item,
+    required this.isFavorite,
+    required this.addFavorite,
   }) : super(key: key);
 
   // final UtilServices utilServices = UtilServices();
@@ -22,7 +24,10 @@ class ItemTile extends StatelessWidget {
         GestureDetector(
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
-              return ProductScreen(item: item);
+              return ProductScreen(
+                item: item,
+                isFavorite: isFavorite,
+              );
             }));
           },
           child: Card(
@@ -91,7 +96,9 @@ class ItemTile extends StatelessWidget {
           top: 10,
           right: 10,
           child: GestureDetector(
-            onTap: () {},
+            onTap: () {
+              addFavorite(item.itemId);
+            },
             child: Container(
               height: 35,
               width: 35,
@@ -100,9 +107,9 @@ class ItemTile extends StatelessWidget {
                   borderRadius: const BorderRadius.all(
                     Radius.circular(10),
                   )),
-              child: const Icon(
-                Icons.favorite_border_outlined,
-                color: Colors.white,
+              child: Icon(
+                !isFavorite ? Icons.favorite_border_outlined : Icons.favorite,
+                color: !isFavorite ? Colors.white : Colors.red,
                 size: 25,
               ),
             ),
