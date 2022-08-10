@@ -16,16 +16,21 @@ class HomeTab extends StatefulWidget {
 
 class _HomeTabState extends State<HomeTab> {
   String selectedCategory = 'Frutas';
-  List<int> userFavorites = [1, 3, 5];
+  List<int> userFavorites = appData.appUserFavorites;
 
-  void addFavorite(int itemId) {
-    setState(() {
-      if (userFavorites.contains(itemId)) {
+  void _addFavorite(int itemId) {
+    if (userFavorites.contains(itemId)) {
+      setState(() {
         userFavorites.remove(itemId);
-      } else {
+      });
+
+      //  appData.appUserFavorites.remove(itemId);
+    } else {
+      setState(() {
         userFavorites.add(itemId);
-      }
-    });
+      });
+      //  appData.appUserFavorites.add(itemId);
+    }
   }
 
   @override
@@ -153,7 +158,7 @@ class _HomeTabState extends State<HomeTab> {
                               item: appData.items[index],
                               isFavorite: userFavorites
                                   .contains(appData.items[index].itemId),
-                              addFavorite: addFavorite);
+                              addFavorite: _addFavorite);
                         })),
               )),
           Positioned(

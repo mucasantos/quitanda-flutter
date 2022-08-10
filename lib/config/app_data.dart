@@ -114,3 +114,4 @@ List<CartItemModel> cartItems = [
   CartItemModel(item: grape, quantity: 1),
   CartItemModel(item: potato, quantity: 3),
 ];
+List<int> appUserFavorites = [];
