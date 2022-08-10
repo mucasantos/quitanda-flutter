@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 import 'package:quitanda/config/custom_color.dart';
 
 class CategoryTile extends StatelessWidget {
@@ -26,7 +25,7 @@ class CategoryTile extends StatelessWidget {
           Container(
             height: 60,
             width: 80,
-            padding: const EdgeInsets.all(8),
+            // padding: const EdgeInsets.all(8),
             //  margin: EdgeInsets.zero,
             decoration: BoxDecoration(
                 color: isSelected
@@ -38,9 +37,8 @@ class CategoryTile extends StatelessWidget {
           Text(
             category,
             style: TextStyle(
-              color: isSelected
-                  ? CustomColors.customContrasColor
-                  : CustomColors.customSwatchColor,
+              color:
+                  isSelected ? CustomColors.customContrasColor : Colors.white,
               fontWeight: FontWeight.w700,
             ),
           )

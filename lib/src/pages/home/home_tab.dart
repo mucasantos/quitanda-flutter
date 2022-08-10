@@ -4,6 +4,8 @@ import 'package:quitanda/config/app_data.dart' as appData;
 
 import 'package:quitanda/config/custom_color.dart';
 import 'package:quitanda/src/pages/home/components/category_tile.dart';
+import 'package:quitanda/src/pages/home/components/discount_card.dart';
+import 'package:quitanda/src/pages/home/components/item_tile.dart';
 
 class HomeTab extends StatefulWidget {
   HomeTab({Key? key}) : super(key: key);
@@ -115,67 +117,7 @@ class _HomeTabState extends State<HomeTab> {
                   itemCount: 13,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: ((context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.only(left: 16.0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: CustomColors.customCardGreenColor,
-                            borderRadius: BorderRadius.circular(16)),
-                        width: 300,
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 16.0),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      'Desconto',
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    Text(
-                                      '25%',
-                                      style: TextStyle(
-                                        fontSize: 40,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    Text(
-                                      'Em todas as frutas',
-                                      style: TextStyle(
-                                        fontSize: 12,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(top: 16.0),
-                                      child: SizedBox(
-                                        height: 20,
-                                        child: ElevatedButton(
-                                          onPressed: () {},
-                                          child: Text('Ver Todos'),
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Image.asset(
-                              'assets/images/food1.png',
-                            )
-                          ],
-                        ),
-                      ),
-                    );
+                    return DiscountCard();
                   })),
             ),
           ),
@@ -185,22 +127,26 @@ class _HomeTabState extends State<HomeTab> {
                 height: 360,
                 width: MediaQuery.of(context).size.width,
                 child: Padding(
-                    padding: EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(10.0),
                     child: GridView.builder(
+                        padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
                         gridDelegate:
                             const SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 2,
                                 mainAxisSpacing: 10,
-                                crossAxisSpacing: 10),
+                                crossAxisSpacing: 10,
+                                childAspectRatio: 9 / 11.6),
                         itemCount: appData.items.length,
                         itemBuilder: (_, index) {
-                          return Container(color: Colors.red);
+                          return ItemTile(
+                            item: appData.items[index],
+                          );
                         })),
               )),
           Positioned(
               top: 160,
-              child: Container(
-                padding: const EdgeInsets.only(left: 25),
+              child: SizedBox(
+                //  padding: const EdgeInsets.only(left: 25),
                 height: 80,
                 width: MediaQuery.of(context).size.width,
                 child: ListView.separated(
