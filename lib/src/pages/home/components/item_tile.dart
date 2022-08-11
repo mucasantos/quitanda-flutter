@@ -8,11 +8,14 @@ class ItemTile extends StatelessWidget {
   final ItemModel item;
   final bool isFavorite;
   final Function(int itemId) addFavorite;
-  const ItemTile({
+  final void Function(GlobalKey key)? cartAnimationMethod;
+  final GlobalKey imageGk = GlobalKey();
+  ItemTile({
     Key? key,
     required this.item,
     required this.isFavorite,
     required this.addFavorite,
+    this.cartAnimationMethod,
   }) : super(key: key);
 
   // final UtilServices utilServices = UtilServices();
@@ -42,17 +45,14 @@ class ItemTile extends StatelessWidget {
                 Expanded(
                   child: Hero(
                     tag: item.imgUrl,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage(
-                              item.imgUrl,
-                            ),
-                            fit: BoxFit.cover),
-                        borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(14),
-                          topRight: Radius.circular(14),
-                        ),
+                    child: ClipRRect(
+                      borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(16),
+                          topRight: Radius.circular(16)),
+                      child: Image.asset(
+                        item.imgUrl,
+                        key: imageGk,
+                        fit: BoxFit.cover,
                       ),
                     ),
                   ),
@@ -119,7 +119,11 @@ class ItemTile extends StatelessWidget {
           bottom: 4,
           right: 4,
           child: GestureDetector(
-            onTap: () {},
+            onTap: cartAnimationMethod == null
+                ? null
+                : () {
+                    cartAnimationMethod!(imageGk);
+                  },
             child: Container(
               height: 40,
               width: 35,

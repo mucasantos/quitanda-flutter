@@ -34,10 +34,12 @@ class _FavoritesTabState extends State<FavoritesTab> {
                   itemCount: appData.appUserFavorites.length,
                   itemBuilder: (_, index) {
                     return ItemTile(
-                        item: appData.items.firstWhere((element) =>
-                            element.itemId == appData.appUserFavorites[index]),
-                        isFavorite: true,
-                        addFavorite: _addFav);
+                      item: appData.items.firstWhere((element) =>
+                          element.itemId == appData.appUserFavorites[index]),
+                      isFavorite: true,
+                      addFavorite: _addFav,
+                      cartAnimationMethod: null,
+                    );
                   }))
         ],
       ),
