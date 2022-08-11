@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quitanda/src/models/cart_item_model.dart';
 import 'package:quitanda/src/models/order_model.dart';
 import 'package:quitanda/src/services/util_services.dart';
 
@@ -39,11 +40,14 @@ class OrderTile extends StatelessWidget {
               child: Row(
                 children: [
                   Expanded(
-                    flex: 3,
-                    child: Container(
-                      color: Colors.red,
-                    ),
-                  ),
+                      flex: 3,
+                      child: ListView(
+                        children: orderData.items.map((orderItem) {
+                          return _OrderItemWidget(
+                            orderItem: orderItem,
+                          );
+                        }).toList(),
+                      )),
                   Expanded(
                     flex: 2,
                     child: Container(
@@ -55,6 +59,45 @@ class OrderTile extends StatelessWidget {
             )
           ],
         ),
+      ),
+    );
+  }
+}
+
+class _OrderItemWidget extends StatelessWidget {
+  final CartItemModel orderItem;
+  const _OrderItemWidget({
+    Key? key,
+    required this.orderItem,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10.0),
+      child: Row(
+        children: [
+          Text(
+            '${orderItem.quantity} ${orderItem.item.unit} ',
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          Expanded(
+            child: Text(
+              orderItem.item.itemName,
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          Text(
+            UtilServices.priceToCurrency(orderItem.totalPrice()),
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
       ),
     );
   }

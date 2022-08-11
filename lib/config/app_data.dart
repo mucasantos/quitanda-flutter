@@ -130,6 +130,24 @@ List<OrderModel> orders = [
     orderId: "001",
     items: [
       CartItemModel(item: apple, quantity: 2),
+      CartItemModel(item: grape, quantity: 3),
+    ],
+    copyAndPast: "copyAndPast",
+    createdDateTime: DateTime.parse(
+      "2021-06-08 10:00:10.458",
+    ),
+    overdueDateTime: DateTime.parse(
+      "2021-06-08 11:00:10.458",
+    ),
+    status: 'pending_paument',
+    total: 0,
+  ),
+  OrderModel(
+    orderId: "002",
+    items: [
+      CartItemModel(item: apple, quantity: 2),
+      CartItemModel(item: grape, quantity: 3),
+      CartItemModel(item: kiwi, quantity: 4),
     ],
     copyAndPast: "copyAndPast",
     createdDateTime: DateTime.parse(
