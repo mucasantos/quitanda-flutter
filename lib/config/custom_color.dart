@@ -14,9 +14,9 @@ Map<int, Color> _swatchOpacity = {
 };
 
 abstract class CustomColors {
-  static Color customContrasColor = Color(0xff907071);
-  static Color customAnimatedTextColor = Color(0xfffbdcb0);
-  static Color customCardGreenColor = Color(0xfff60DEB1);
+  static Color customContrasColor = const Color(0xff907071);
+  static Color customAnimatedTextColor = const Color(0xfffbdcb0);
+  static Color customCardGreenColor = const Color(0xff60DEB1);
 
   static MaterialColor customSwatchColor =
       MaterialColor(0xff4CAD73, _swatchOpacity);

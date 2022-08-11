@@ -1,4 +1,3 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:quitanda/config/custom_color.dart';
 import 'package:quitanda/src/pages/common_widgets/custom_textfield.dart';
@@ -20,7 +19,7 @@ class SignInScreen extends StatelessWidget {
           width: size.width,
           child: Column(
             children: [
-              HeaderApp(
+              const HeaderApp(
                 imagePath: 'assets/images/login.png',
               ),
               Container(
@@ -49,7 +48,7 @@ class SignInScreen extends StatelessWidget {
                         onPressed: () {
                           Navigator.of(context).pushReplacement(
                               MaterialPageRoute(builder: (ctx) {
-                            return BaseScreen();
+                            return const BaseScreen();
                           }));
                         },
                         child: const Text(

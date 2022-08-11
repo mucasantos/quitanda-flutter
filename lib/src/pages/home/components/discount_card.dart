@@ -22,7 +22,7 @@ class DiscountCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text(
+                    const Text(
                       'Desconto',
                       style: TextStyle(
                         fontSize: 20,
@@ -30,7 +30,7 @@ class DiscountCard extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Text(
+                    const Text(
                       '25%',
                       style: TextStyle(
                         fontSize: 40,
@@ -38,7 +38,7 @@ class DiscountCard extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Text(
+                    const Text(
                       'Em todas as frutas',
                       style: TextStyle(
                         fontSize: 12,
@@ -52,7 +52,7 @@ class DiscountCard extends StatelessWidget {
                         height: 20,
                         child: ElevatedButton(
                           onPressed: () {},
-                          child: Text('Ver Todos'),
+                          child: const Text('Ver Todos'),
                         ),
                       ),
                     )

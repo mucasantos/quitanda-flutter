@@ -1,3 +1,5 @@
+// ignore_for_file: library_prefixes
+
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:quitanda/config/app_data.dart' as appData;
@@ -133,7 +135,7 @@ class _HomeTabState extends State<HomeTab> {
                   itemCount: 13,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: ((context, index) {
-                    return DiscountCard();
+                    return const DiscountCard();
                   })),
             ),
           ),

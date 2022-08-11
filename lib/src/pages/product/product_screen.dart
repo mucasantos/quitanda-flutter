@@ -5,14 +5,13 @@ import 'package:quitanda/src/pages/common_widgets/quantity_widget.dart';
 import 'package:quitanda/src/services/util_services.dart';
 
 class ProductScreen extends StatefulWidget {
+  ItemModel item;
+  bool isFavorite;
   ProductScreen({
     Key? key,
     required this.item,
     required this.isFavorite,
   }) : super(key: key);
-
-  ItemModel item;
-  bool isFavorite;
 
   @override
   State<ProductScreen> createState() => _ProductScreenState();

@@ -7,7 +7,7 @@ import 'package:quitanda/src/pages/orders/orders_tab.dart';
 import 'package:quitanda/src/pages/profile/profile_tab.dart';
 
 class BaseScreen extends StatefulWidget {
-  BaseScreen({Key? key}) : super(key: key);
+  const BaseScreen({Key? key}) : super(key: key);
 
   @override
   State<BaseScreen> createState() => _BaseScreenState();

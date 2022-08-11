@@ -1,3 +1,5 @@
+// ignore_for_file: library_prefixes
+
 import 'package:flutter/material.dart';
 import 'package:quitanda/config/app_data.dart' as appData;
 import 'package:quitanda/config/custom_color.dart';
@@ -141,7 +143,7 @@ class _ProfileTabState extends State<ProfileTab> {
                         onPressed: () {
                           Navigator.of(context).pop();
                         },
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.close,
                         )))
               ],
