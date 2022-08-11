@@ -1,5 +1,6 @@
 import 'package:quitanda/src/models/cart_item_model.dart';
 import 'package:quitanda/src/models/item_model.dart';
+import 'package:quitanda/src/models/order_model.dart';
 import 'package:quitanda/src/models/user_mode.dart';
 
 ItemModel apple = ItemModel(
@@ -123,3 +124,21 @@ UserModel user = UserModel(
     cpf: "999.999.999-99",
     password: "senha",
     phone: "99 9 9999-9999");
+
+List<OrderModel> orders = [
+  OrderModel(
+    orderId: "001",
+    items: [
+      CartItemModel(item: apple, quantity: 2),
+    ],
+    copyAndPast: "copyAndPast",
+    createdDateTime: DateTime.parse(
+      "2021-06-08 10:00:10.458",
+    ),
+    overdueDateTime: DateTime.parse(
+      "2021-06-08 11:00:10.458",
+    ),
+    status: 'pending_paument',
+    total: 0,
+  )
+];

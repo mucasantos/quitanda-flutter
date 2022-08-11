@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:quitanda/config/custom_color.dart';
 import 'package:quitanda/src/models/item_model.dart';
 import 'package:quitanda/src/pages/common_widgets/quantity_widget.dart';
