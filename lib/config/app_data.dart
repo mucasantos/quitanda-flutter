@@ -134,12 +134,12 @@ List<OrderModel> orders = [
     ],
     copyAndPast: "copyAndPast",
     createdDateTime: DateTime.parse(
-      "2021-06-08 10:00:10.458",
+      "2022-09-08 10:00:10.458",
     ),
     overdueDateTime: DateTime.parse(
-      "2021-06-08 11:00:10.458",
+      "2022-09-08 11:00:10.458",
     ),
-    status: 'pending_paument',
+    status: 'pending_payment',
     total: 0,
   ),
   OrderModel(
@@ -151,12 +151,29 @@ List<OrderModel> orders = [
     ],
     copyAndPast: "copyAndPast",
     createdDateTime: DateTime.parse(
-      "2021-06-08 10:00:10.458",
+      "2022-06-15 10:00:10.458",
     ),
     overdueDateTime: DateTime.parse(
-      "2021-06-08 11:00:10.458",
+      "2022-09-08 11:00:10.458",
     ),
-    status: 'pending_paument',
+    status: 'delivered',
     total: 0,
-  )
+  ),
+  OrderModel(
+    orderId: "003",
+    items: [
+      CartItemModel(item: guava, quantity: 2),
+      CartItemModel(item: onion, quantity: 3),
+      CartItemModel(item: kiwi, quantity: 4),
+    ],
+    copyAndPast: "copyAndPast",
+    createdDateTime: DateTime.parse(
+      "2022-06-15 10:00:10.458",
+    ),
+    overdueDateTime: DateTime.parse(
+      "2022-09-08 11:00:10.458",
+    ),
+    status: 'preparing_purchase',
+    total: 0,
+  ),
 ];
