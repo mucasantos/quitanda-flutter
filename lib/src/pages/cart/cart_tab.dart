@@ -1,7 +1,5 @@
 // ignore_for_file: library_prefixes
 
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:quitanda/config/app_data.dart' as appData;
 import 'package:quitanda/config/custom_color.dart';

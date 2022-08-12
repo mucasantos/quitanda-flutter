@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:quitanda/config/custom_color.dart';
 import 'package:quitanda/src/pages/common_widgets/custom_textfield.dart';
 import 'package:quitanda/src/pages/common_widgets/header_app.dart';
-import 'package:quitanda/src/pages/auth/sign_up_Screen.dart';
-import 'package:quitanda/src/pages/base/base_screen.dart';
+import 'package:quitanda/src/pages_routes/app_pages.dart';
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({Key? key}) : super(key: key);
@@ -46,10 +46,7 @@ class SignInScreen extends StatelessWidget {
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(14))),
                         onPressed: () {
-                          Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(builder: (ctx) {
-                            return const BaseScreen();
-                          }));
+                          Get.offNamed(PagesRoutes.homeScreen);
                         },
                         child: const Text(
                           'Entrar',
@@ -103,10 +100,7 @@ class SignInScreen extends StatelessWidget {
                               color: CustomColors.customSwatchColor,
                             )),
                         onPressed: () {
-                          Navigator.of(context)
-                              .push(MaterialPageRoute(builder: (ctx) {
-                            return SignUpScreen();
-                          }));
+                          Get.toNamed(PagesRoutes.signUpRoute);
                         },
                         child: const Text(
                           'Criar conta',

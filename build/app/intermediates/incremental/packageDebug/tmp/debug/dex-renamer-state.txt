@@ -1,4 +1,4 @@
-#Thu Aug 11 16:11:58 BRT 2022
+#Fri Aug 12 18:51:29 BRT 2022
 base.0=/Users/samuelsantos/Documents/development/flutter/quitanda/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
 renamed.0=classes.dex
 path.0=classes.dex
