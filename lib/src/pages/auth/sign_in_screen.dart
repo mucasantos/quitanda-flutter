@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quitanda/config/custom_color.dart';
+import 'package:quitanda/src/pages/auth/controller/auth_controller.dart';
 import 'package:quitanda/src/pages/common_widgets/custom_textfield.dart';
 import 'package:quitanda/src/pages/common_widgets/header_app.dart';
 import 'package:quitanda/src/pages_routes/app_pages.dart';
@@ -10,8 +11,13 @@ class SignInScreen extends StatelessWidget {
 
   final _form = GlobalKey<FormState>();
 
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
+    emailController.text = 'samuca@email.com';
+    passwordController.text = '12345678';
     final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.white,
@@ -34,6 +40,7 @@ class SignInScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       CustomTextField(
+                        controller: emailController,
                         icon: Icons.email,
                         label: 'E-mail',
                         validator: (email) {
@@ -45,6 +52,7 @@ class SignInScreen extends StatelessWidget {
                         },
                       ),
                       CustomTextField(
+                        controller: passwordController,
                         isHidden: true,
                         icon: Icons.lock,
                         label: 'Senha',
@@ -61,24 +69,36 @@ class SignInScreen extends StatelessWidget {
                       SizedBox(
                         // width: double.infinity,
                         height: 50,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(14))),
-                          onPressed: () {
-                            _form.currentState!.save();
-
-                            if (_form.currentState!.validate()) {
-                              Get.offNamed(PagesRoutes.homeScreen);
-                            }
-                          },
-                          child: const Text(
-                            'Entrar',
-                            style: TextStyle(
-                              fontSize: 18,
-                            ),
-                          ),
-                        ),
+                        child: GetX<AuthController>(builder: (controller) {
+                          return ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(14))),
+                            onPressed: controller.isLoading.value
+                                ? null
+                                : () {
+                                    //   Focus.of(context)
+                                    //       .unfocus(); // desaparece o teclado
+                                    if (_form.currentState!.validate()) {
+                                      controller
+                                          .signIn(
+                                              email: emailController.text,
+                                              password: passwordController.text)
+                                          .then((value) => Get.offNamed(
+                                              PagesRoutes.homeScreen));
+                                      //    Get.offNamed(PagesRoutes.homeScreen);
+                                    }
+                                  },
+                            child: controller.isLoading.value
+                                ? const CircularProgressIndicator()
+                                : const Text(
+                                    'Entrar',
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                          );
+                        }),
                       ),
                       Align(
                         alignment: Alignment.centerRight,

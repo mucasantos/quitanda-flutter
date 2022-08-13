@@ -42,6 +42,8 @@ dependencies:
   add_to_cart_animation: ^0.0.7
   fluttertoast: ^8.0.9
   get: ^4.6.5
+  dio: ^4.0.6
+
 
 
 

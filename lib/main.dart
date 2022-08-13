@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quitanda/config/custom_color.dart';
+import 'package:quitanda/src/pages/auth/controller/auth_controller.dart';
 import 'package:quitanda/src/pages_routes/app_pages.dart';
 
 void main() {
+  Get.put(AuthController());
   runApp(const MyApp());
 }
 
