@@ -6,6 +6,7 @@ part 'user_model.g.dart';
 class UserModel {
   String? fullname;
   String? email;
+  String? username;
   String? phone;
   String? cpf;
   String? password;
@@ -19,6 +20,7 @@ class UserModel {
     this.password,
     this.id,
     this.sessionToken,
+    this.username,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) =>

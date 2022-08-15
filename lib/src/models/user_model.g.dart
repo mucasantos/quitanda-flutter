@@ -14,11 +14,13 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel(
       password: json['password'] as String?,
       id: json['id'] as String?,
       sessionToken: json['sessionToken'] as String?,
+      username: json['username'] as String?,
     );
 
 Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
       'fullname': instance.fullname,
       'email': instance.email,
+      'username': instance.username,
       'phone': instance.phone,
       'cpf': instance.cpf,
       'password': instance.password,

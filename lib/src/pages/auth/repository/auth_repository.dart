@@ -8,6 +8,17 @@ import 'package:quitanda/src/services/http_manager.dart';
 class AuthRepository {
   final HttpManager _httpManager = HttpManager();
 
+  AuthResult handlerUserOrError(Map<String, dynamic> result) {
+    if (result['code'] == null) {
+      log(result.toString());
+      final user = UserModel.fromJson(result);
+      return AuthResult.success(user);
+    } else {
+      log(result.toString());
+      return AuthResult.error('Usuário ou senha inválida');
+    }
+  }
+
   Future<AuthResult> validateToken(String userToken) async {
     final result = await _httpManager.restRequest(
         url: Endpoints.validateToken,
@@ -16,14 +27,7 @@ class AuthRepository {
           'X-Parse-Session-Token': userToken,
         });
 
-    if (result['code'] == null) {
-      log(result.toString());
-      final user = UserModel.fromJson(result);
-      return AuthResult.success(user);
-    } else {
-      log(result.toString());
-      return AuthResult.error('Token Inválido');
-    }
+    return handlerUserOrError(result);
   }
 
   Future<AuthResult> signIn(
@@ -34,13 +38,16 @@ class AuthRepository {
       'password': password,
     });
 
-    if (result['code'] == null) {
-      log(result.toString());
-      final user = UserModel.fromJson(result);
-      return AuthResult.success(user);
-    } else {
-      log(result.toString());
-      return AuthResult.error('Usuário ou senha inválida');
-    }
+    return handlerUserOrError(result);
+  }
+
+  Future<AuthResult> signUpUser(UserModel user) async {
+    final result = await _httpManager.restRequest(
+      url: Endpoints.signUp,
+      method: HttptMethods.post,
+      body: user.toJson(),
+    );
+
+    return handlerUserOrError(result);
   }
 }
