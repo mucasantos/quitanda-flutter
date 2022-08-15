@@ -5,9 +5,9 @@ import 'package:quitanda/src/pages/common_widgets/quantity_widget.dart';
 import 'package:quitanda/src/services/util_services.dart';
 
 class ProductScreen extends StatefulWidget {
-  ItemModel item;
-  bool isFavorite;
-  ProductScreen({
+  final ItemModel item;
+  final bool isFavorite;
+  const ProductScreen({
     Key? key,
     required this.item,
     required this.isFavorite,

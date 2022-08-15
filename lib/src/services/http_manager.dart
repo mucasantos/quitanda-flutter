@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:quitanda/src/config/apidata.dart';
 
 class HttpManager {
   Dio dio = Dio();
@@ -13,10 +14,10 @@ class HttpManager {
       ..addAll({
         'content-type': 'application/json',
         'accept': 'application/json',
-        'X-Parse-Application-Id': 'application/json',
-        'X-Parse-REST-API-Key': 'application/json',
+        'X-Parse-Application-Id': ApiData.xParseAppId,
+        'X-Parse-REST-API-Key': ApiData.xParseRestId,
       });
-    dio.request(
+    return await dio.request(
       url,
       options: Options(
         method: method,
