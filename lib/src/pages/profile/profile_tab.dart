@@ -1,8 +1,9 @@
 // ignore_for_file: library_prefixes
 
 import 'package:flutter/material.dart';
-import 'package:quitanda/config/app_data.dart' as appData;
+import 'package:get/get.dart';
 import 'package:quitanda/config/custom_color.dart';
+import 'package:quitanda/src/pages/auth/controller/auth_controller.dart';
 import 'package:quitanda/src/pages/common_widgets/custom_textfield.dart';
 
 class ProfileTab extends StatefulWidget {
@@ -13,6 +14,8 @@ class ProfileTab extends StatefulWidget {
 }
 
 class _ProfileTabState extends State<ProfileTab> {
+  final authController = Get.find<AuthController>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +25,9 @@ class _ProfileTabState extends State<ProfileTab> {
         ),
         actions: [
           IconButton(
-              onPressed: () {},
+              onPressed: () {
+                authController.signOut();
+              },
               icon: const Icon(
                 Icons.logout,
               ))
@@ -34,25 +39,25 @@ class _ProfileTabState extends State<ProfileTab> {
         children: [
           CustomTextField(
             readOnly: true,
-            initialValue: appData.user.email,
+            initialValue: authController.user.email,
             icon: Icons.email,
             label: 'Email',
           ),
           CustomTextField(
             readOnly: true,
-            initialValue: appData.user.fullname,
+            initialValue: authController.user.fullname,
             icon: Icons.person,
             label: 'Nome',
           ),
           CustomTextField(
             readOnly: true,
-            initialValue: appData.user.phone,
+            initialValue: authController.user.phone,
             icon: Icons.phone,
             label: 'Celular',
           ),
           CustomTextField(
             readOnly: true,
-            initialValue: appData.user.cpf,
+            initialValue: authController.user.cpf,
             icon: Icons.file_copy,
             label: 'CPF',
             isHidden: true,
