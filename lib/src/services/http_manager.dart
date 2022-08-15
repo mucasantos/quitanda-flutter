@@ -4,7 +4,7 @@ import 'package:quitanda/src/config/apidata.dart';
 class HttpManager {
   Dio dio = Dio();
 
-  Future restRequest({
+  Future<Map<String, dynamic>> restRequest({
     required String url,
     required String method,
     Map? headers,
@@ -17,14 +17,21 @@ class HttpManager {
         'X-Parse-Application-Id': ApiData.xParseAppId,
         'X-Parse-REST-API-Key': ApiData.xParseRestId,
       });
-    return await dio.request(
-      url,
-      options: Options(
-        method: method,
-        headers: defaultHeaders,
-      ),
-      data: body,
-    );
+
+    try {
+      Response result = await dio.request(
+        url,
+        options: Options(
+          method: method,
+          headers: defaultHeaders,
+        ),
+        data: body,
+      );
+
+      return result.data;
+    } on DioError catch (e) {
+      return e.response!.data;
+    }
   }
 }
 

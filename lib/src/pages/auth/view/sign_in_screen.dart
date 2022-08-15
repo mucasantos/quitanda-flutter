@@ -17,7 +17,7 @@ class SignInScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     emailController.text = 'samuca@email.com';
-    passwordController.text = '12345678';
+    //  passwordController.text = '12345678';
     final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.white,
@@ -80,13 +80,9 @@ class SignInScreen extends StatelessWidget {
                                     //   Focus.of(context)
                                     //       .unfocus(); // desaparece o teclado
                                     if (_form.currentState!.validate()) {
-                                      controller
-                                          .signIn(
-                                              email: emailController.text,
-                                              password: passwordController.text)
-                                          .then((value) => Get.offNamed(
-                                              PagesRoutes.homeScreen));
-                                      //    Get.offNamed(PagesRoutes.homeScreen);
+                                      controller.signIn(
+                                          email: emailController.text,
+                                          password: passwordController.text);
                                     }
                                   },
                             child: controller.isLoading.value
