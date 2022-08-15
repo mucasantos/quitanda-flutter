@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quitanda/config/custom_color.dart';
+import 'package:quitanda/src/config/custom_color.dart';
 
 class QuantityWidget extends StatelessWidget {
   final int value;
