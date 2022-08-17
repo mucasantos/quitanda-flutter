@@ -30,6 +30,17 @@ class AuthRepository {
     return handlerUserOrError(result);
   }
 
+  Future<String> recoverPassword(String email) async {
+    final result = await _httpManager.restRequest(
+        url: Endpoints.resetPassword,
+        method: HttptMethods.post,
+        body: {
+          'email': email,
+        });
+
+    return 'Verifique o seu email.';
+  }
+
   Future<AuthResult> signIn(
       {required String email, required String password}) async {
     final result = await _httpManager

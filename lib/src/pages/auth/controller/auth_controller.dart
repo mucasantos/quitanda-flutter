@@ -28,6 +28,15 @@ class AuthController extends GetxController {
     Get.offAllNamed(PagesRoutes.homeScreen);
   }
 
+  Future<void> recoverPassword(String email) async {
+    String result = await authRepository.recoverPassword(email);
+
+    UtilServices.showToast(
+      message: result,
+      isError: true,
+    );
+  }
+
   Future<void> validateToken() async {
     String? token = await utilServices.getLocalData(key: 'token');
 

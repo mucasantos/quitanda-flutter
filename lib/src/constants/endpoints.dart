@@ -4,4 +4,5 @@ abstract class Endpoints {
   static const String signIn = '$urlBase/login';
   static const String signUp = '$urlBase/users';
   static const String validateToken = '$urlBase/users/me';
+  static const String resetPassword = '$urlBase/requestPasswordReset';
 }
