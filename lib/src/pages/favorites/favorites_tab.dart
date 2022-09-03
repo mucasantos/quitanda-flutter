@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:quitanda/config/app_data.dart' as appData;
-import 'package:quitanda/src/pages/home/components/item_tile.dart';
+import 'package:quitanda/src/pages/home/view/components/item_tile.dart';
 
 class FavoritesTab extends StatefulWidget {
   const FavoritesTab({Key? key}) : super(key: key);
@@ -11,7 +11,7 @@ class FavoritesTab extends StatefulWidget {
   State<FavoritesTab> createState() => _FavoritesTabState();
 }
 
-void _addFav(int id) {}
+void _addFav(String id) {}
 
 class _FavoritesTabState extends State<FavoritesTab> {
   @override
@@ -35,7 +35,7 @@ class _FavoritesTabState extends State<FavoritesTab> {
                   itemBuilder: (_, index) {
                     return ItemTile(
                       item: appData.items.firstWhere((element) =>
-                          element.itemId == appData.appUserFavorites[index]),
+                          element.objectId == appData.appUserFavorites[index]),
                       isFavorite: true,
                       addFavorite: _addFav,
                       cartAnimationMethod: null,

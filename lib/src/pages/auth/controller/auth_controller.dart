@@ -33,7 +33,7 @@ class AuthController extends GetxController {
 
     UtilServices.showToast(
       message: result,
-      isError: true,
+      isError: false,
     );
   }
 

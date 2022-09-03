@@ -4,7 +4,7 @@ import 'package:quitanda/src/models/order_model.dart';
 import 'package:quitanda/src/models/user_model.dart';
 
 ItemModel apple = ItemModel(
-  itemId: 1,
+  objectId: '1',
   description: 'A melhor maça da regiao',
   imgUrl: 'assets/fruits/apple.png',
   itemName: 'Maça',
@@ -13,7 +13,7 @@ ItemModel apple = ItemModel(
 );
 
 ItemModel mango = ItemModel(
-  itemId: 2,
+  objectId: '2',
   description: 'A melhor maça da regiao',
   imgUrl: 'assets/fruits/mango.png',
   itemName: 'Mango',
@@ -21,7 +21,7 @@ ItemModel mango = ItemModel(
   unit: 'kg',
 );
 ItemModel papaya = ItemModel(
-  itemId: 3,
+  objectId: '3',
   description: 'A melhor maça da regiao',
   imgUrl: 'assets/fruits/papaya.png',
   itemName: 'Papaya',
@@ -29,7 +29,7 @@ ItemModel papaya = ItemModel(
   unit: 'kg',
 );
 ItemModel grape = ItemModel(
-  itemId: 4,
+  objectId: '4',
   description: 'A melhor maça da regiao',
   imgUrl: 'assets/fruits/grape.png',
   itemName: 'Grape',
@@ -37,7 +37,7 @@ ItemModel grape = ItemModel(
   unit: 'kg',
 );
 ItemModel guava = ItemModel(
-  itemId: 5,
+  objectId: '5',
   description: 'A melhor maça da regiao',
   imgUrl: 'assets/fruits/guava.png',
   itemName: 'Guava',
@@ -45,7 +45,7 @@ ItemModel guava = ItemModel(
   unit: 'kg',
 );
 ItemModel kiwi = ItemModel(
-  itemId: 6,
+  objectId: '6',
   description:
       'O melhor kiwi da regiao e que conta com o melhor preço de qualquer quitanda. Este item conta com vitaminas essenciais para o fortalecimento corporal, resultando em uma vida mais saudável.',
   imgUrl: 'assets/fruits/kiwi.png',
@@ -54,7 +54,7 @@ ItemModel kiwi = ItemModel(
   unit: 'kg',
 );
 ItemModel chilli = ItemModel(
-  itemId: 7,
+  objectId: '7',
   description: 'A melhor maça da regiao',
   imgUrl: 'assets/fruits/chilli.png',
   itemName: 'Chilli',
@@ -63,7 +63,7 @@ ItemModel chilli = ItemModel(
 );
 
 ItemModel carrot = ItemModel(
-  itemId: 8,
+  objectId: '8',
   description: 'A melhor maça da regiao',
   imgUrl: 'assets/fruits/carrot.png',
   itemName: 'Cenouras',
@@ -72,7 +72,7 @@ ItemModel carrot = ItemModel(
 );
 
 ItemModel onion = ItemModel(
-  itemId: 9,
+  objectId: '9',
   description: 'A melhor maça da regiao',
   imgUrl: 'assets/fruits/onion.png',
   itemName: 'Cebolas',
@@ -81,7 +81,7 @@ ItemModel onion = ItemModel(
 );
 
 ItemModel potato = ItemModel(
-  itemId: 10,
+  objectId: '10',
   description: 'A melhor maça da regiao',
   imgUrl: 'assets/fruits/potato.png',
   itemName: 'Batatas',
